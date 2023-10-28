@@ -1,0 +1,1089 @@
+{% extends 'main.html' %}
+
+
+{% block style %}
+
+
+<style>
+    .overall {
+        display: flex;
+        color: #000;
+    }
+
+    .introduction {
+
+        color: #000;
+        height: 30vh;
+        margin-right: 20px;
+        margin-top: 1%;
+        position: relative;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: 70%;
+
+    }
+
+    #navigation {
+
+        margin: 20px 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-sizing: border-box;
+        width: 30vw;
+
+        position: relative;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    #navigation ul {
+        display: flex;
+        list-style: none;
+
+    }
+
+    #navigation ul li {
+
+
+        cursor: pointer;
+        width: 50%;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #navigation ul #reviews {
+        padding: 10px 50px;
+        display: flex;
+    }
+
+    #navigation ul #reviews a {
+        color: #fff;    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    #navigation ul #jobs {
+        display: flex;
+        align-items: center;
+
+    }
+
+    a{
+        color: #000;
+    }
+    #navigation ul #jobs a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #navigation ul li a:hover {
+        background-color: #000;
+        color: #fff;
+        border-radius: 10px;
+    }
+
+
+
+    .navigation-active {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .body {
+        /* background-color: #fff; */
+        border-radius: 10px;
+    }
+
+    .body .left h2 {
+        padding: 10px 0px 30px 0px;
+    }
+
+    .body .left .particular {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        height: 100px;
+
+        cursor: pointer;
+
+    }
+
+    .left .particular .middle {
+        width: 75%;
+        margin-left: 20px;
+        font-size: 18px;
+    }
+
+    .body .left .particular:hover {
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        color: #ef233c;
+        font-weight: bold;
+    }
+
+    .body .right {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        /* width: 30%; */
+        display: none;
+        border-radius: 10px;
+
+    }
+
+    .container .right {
+        background-color: #fff;
+        border-radius: 10px;
+
+    }
+
+    .juding {
+        display: flex;
+        align-items: top;
+        margin: 15px 20px;
+    }
+
+    .juding>span {
+        display: flex;
+        margin-left: 10%;
+    }
+
+    .star0 {
+        font-size: 40px;
+    }
+
+    .star0.small {
+        font-size: 25px;
+    }
+
+    .star {
+        color: #ccc;
+        cursor: pointer;
+        border-radius: 100px;
+    }
+
+    #write_review {
+        background-color: #457b9d;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 5px;
+        width: 150px;
+        height: 50px;
+        border-style: none;
+        cursor: pointer;
+    }
+
+    #write_review:hover {
+        color: #000;
+    }
+
+    .container #left {
+        width: 100%;
+    }
+
+    .left .particular img {
+        width: 70px;
+    }
+
+    .body .left .particular {
+        display: flex;
+        align-items: center;
+    }
+
+    .threepart {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px 10px 20px 10px;
+        border-radius: 10px;
+    }
+
+    .hot #top {
+        background-color: #fb8500;
+        width: 40%;
+
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .skills {
+        padding: 2px 7px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+
+    .skills:hover {
+        border: 1px solid #ef233c;
+        color: #ef233c;
+    }
+
+    #overallRate {
+        /* display: flex;
+    align-items: center; */
+        padding: 10px 15px;
+    }
+
+    #overallRate .star0 {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 50px;
+    }
+
+    .top-reviews {
+        margin: 20px;
+    }
+
+    /* .comment{
+    margin: 30px 10px ;
+} */
+    .comment {
+        display: block;
+        width: 50%;
+    }
+
+    .comment .title {
+        font-size: 25px;
+    }
+
+    .eachcomment {
+        display: flex;
+        align-items: center;
+
+
+        margin: 40px 3%;
+    }
+
+    .eachcomment .user {
+        margin-right: 5%;
+    }
+
+    /* JOBS CSS */
+
+    .jobs.des {
+        display: flex;
+        align-items: center;
+    }
+
+    .job.des .circleImage {
+
+        width: 9vw;
+        height: 9vw;
+
+    }
+
+    .jobs.des img {
+        margin: 2% 5%;
+        width: 9vw;
+        height: 9vw;
+        border: 1px solid #8d99ae;
+        border-radius: 50%;
+    }
+
+    .jobs.tag {
+        display: flex;
+        margin: 0% 25% 2% 25%;
+    }
+
+    .jobs.tag .tagName {
+
+        background-color: #8da9c4;
+        border-radius: 5px;
+        margin: 0px 10px;
+        padding: 6px 12px;
+    }
+
+    .jobs.sections {
+
+        margin: 20px 0;
+        border-bottom: 1px solid #adb5bd;
+        cursor: pointer;
+    }
+
+    .jobs.sections:hover {
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+
+    }
+
+    .container0 {
+        width: 60vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .jobs.name {
+        width: 60%
+    }
+
+    .headers__actions {
+        padding: 30px 20px;
+        flex: 0 0 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .headers__actions>.ibutton:first-child {
+        margin-bottom: 10px;
+        text-decoration: none;
+    }
+
+    .svg-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .svg-icon__icon,
+    .svg-icon__icon a {
+        fill: currentColor;
+        width: 14px;
+        height: 14px;
+        color: #7a7a7a;
+        flex-shrink: 0;
+    }
+
+    .search-page__job-preview {
+        padding: 0 30px;
+        position: sticky;
+        overflow: scroll;
+        height: calc(100vh + 100px);
+
+        background-color: #fff;
+    }
+
+    .job-details__paragraph {
+        font-size: 16px;
+        color: #353535;
+        margin: 20px 0;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .search-page__job-preview::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .search-page__job-preview {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .job-details__header {
+        margin-bottom: 20px;
+        padding-top: 20px;
+        position: sticky;
+        top: -10px;
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .job-details__title {
+        font-size: 29px;
+        font-weight: 500;
+        color: #1b1b1b;
+    }
+
+    .job-details__overview {
+        border-top: 3px solid var(--color-light);
+        /* background: #fff1e1 !important; */
+        display: flex;
+        z-index: 3;
+        position: relative;
+        overflow: hidden;
+        font-weight: 400;
+        padding: 27px 0;
+        transition: all .25s ease;
+    }
+
+    .job-details__overview .logo {
+        margin: 38px 30px 0 25px;
+    }
+
+    .job-details__overview .logo img {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 10px;
+        width: 70px;
+        height: 70px;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .job-details__overview__description {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+
+    .job-details__overview__description a {
+        color: #231f20;
+        font-size: 20px;
+        padding-left: 0;
+        ;
+    }
+
+    .city_and_posted_date {
+        display: flex;
+        font-size: 13px;
+        margin-right: 20px;
+        margin-left: 10px;
+        text-align: right;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 100px;
+    }
+
+    .city_and_posted_date .feature {
+        background: var(--color-sub-light);
+        font-family: "Roboto Condensed", sans-serif;
+        display: inline-block;
+    }
+
+    .city_and_posted_date .new {
+        padding: 2px 10px;
+        min-width: 45px;
+        color: #fff;
+        background: var(--color-sub-light);
+        text-align: center;
+        display: inline-block;
+        align-self: flex-end;
+    }
+
+    .distance-time-job-posted {
+        font-size: 13px;
+    }
+
+    .swiper-pointer-events {
+        touch-action: pan-y;
+    }
+
+    .swiper {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .swiper {
+        height: 450px;
+        width: 600px;
+    }
+
+    .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        box-sizing: content-box;
+    }
+
+    .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .swiper-slide-inner {
+        width: 100%;
+    }
+
+    img.lazyloaded[data-controller~=lazyload] {
+        opacity: 1;
+        transition: opacity 200ms;
+    }
+
+    .swiper-slide img {
+        max-width: 100%;
+    }
+
+    img[data-controller~=lazyload],
+    img.lazyloading[data-controller~=lazyload] {
+        opacity: 0;
+    }
+
+    .job-details__divider {
+        border-bottom: 1px solid var(--color-light);
+    }
+
+    .job-details__second-title {
+        font-size: 23px;
+        color: #353535;
+        font-weight: 400;
+        margin: 30px 0 0;
+    }
+
+    .jd-page__employer-overview {
+        border: 3px solid var(--color-light);
+        height: 570px;
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .employer-long-overview__top {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .employer-long-overview__top-left {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .employer-long-overview__name {
+        font-size: 30px;
+        font-weight: 500;
+        color: #1b1b1b;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .employer-long-overview__short-desc {
+        font-size: 16px;
+        color: #353535;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .employer-long-overview__basic-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: 5px;
+        font-size: 14px;
+    }
+
+    .panel {
+        margin-bottom: 15px;
+        background-color: #fff;
+        /* border: 1px solid #ddd; */
+        /* border-radius: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05); */
+    }
+
+    .panel-default>.panel-heading {
+        background: #fff;
+        border: 0;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    /* ol,
+    ul {
+        padding: 0 0 0 20px;
+        margin: 1em 0;
+    } */
+
+    .reasons-to-join>.item {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    .reasons-to-join>.item>.number {
+        color: #333;
+        border: 2px solid #333;
+        border-radius: 50%;
+        display: inline-block;
+        padding: 1px 7px;
+        margin-right: 10px;
+        font-weight: bold;
+        align-self: flex-start;
+    }
+
+    .panel-paragraph {
+        font-size: 16px;
+        line-height: 1.7em;
+    }
+
+    .swiper-pointer-events {
+        touch-action: pan-y;
+    }
+
+    .swiper {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .swiper {
+        height: 450px;
+        width: 600px;
+    }
+
+    p {
+        margin: 1em 0.5em;
+    }
+
+    .panel-heading {
+        padding: 10px 20px;
+    }
+
+    /* Overall Rating */
+    .align-items-center {
+        align-items: center !important;
+    }
+
+    .panel-body {
+        padding: 10px 0 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .disable-user-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .d-flex {
+        display: flex !important;
+    }
+
+    .rating-stars-box {
+        font-size: 0;
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    .rating-stars-box img {
+        margin: 0 2px;
+        padding: 8px;
+        background-color: var(--color-sub-light);
+        border-radius: 2px;
+    }
+
+    .size {
+        width: 40px;
+        aspect-ratio: auto 40 / 38;
+        height: 38px;
+    }
+
+    .rating-stars-box .two-colors-star img {
+        --blue-width: 50.0%;
+        --grey-width: 50.0%;
+        background: linear-gradient(to right, var(--color-sub-light), var(--color-sub-light) var(--blue-width), #E9E9E9 var(--blue-width), #E9E9E9 var(--grey-width));
+    }
+
+    .rating-stars-box .grey-stars img {
+        background-color: #e9e9e9;
+    }
+
+    .company-ratings__star-point {
+        font-size: 30px;
+        margin-left: 40px;
+    }
+
+    hr:not([size]) {
+        height: 1px;
+    }
+
+    hr {
+        margin: 1rem 0;
+        color: inherit;
+        background-color: currentColor;
+        border: 0;
+        opacity: .25;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        /* border-color: inherit; */
+    }
+
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        /* border-color: inherit; */
+    }
+
+    td {
+        display: table-cell;
+        vertical-align: inherit;
+    }
+
+    table {
+        caption-side: bottom;
+        border-collapse: collapse;
+    }
+
+    table {
+        display: table;
+        /* border-collapse: separate;
+        box-sizing: border-box; */
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: gray;
+    }
+
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    td,
+    th {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+    }
+
+    #company-rating__rate {
+        position: relative;
+    }
+
+    #company-rating__rate strong {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 44px;
+        font-size: 20px;
+        color: var(--color-sub-light);
+    }
+
+    b,
+    strong {
+        font-weight: var(--font-bold);
+    }
+
+    .pl-10 {
+        padding-left: 10px !important;
+    }
+
+    .company-details-ratings {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .company-details-ratings__item {
+        display: flex;
+        align-items: flex-start;
+        column-gap: 10px;
+    }
+
+    .company-details-ratings__item-text {
+        flex-grow: 1;
+        color: var(--color-sub-light);
+    }
+
+    canvas {
+        aspect-ratio: auto 100 / 100;
+    }
+
+    canvas {
+        overflow-clip-margin: content-box;
+        overflow: clip;
+    }
+
+    .disable-user-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .rating-bar-box {
+        position: relative;
+        white-space: nowrap;
+        display: inline-block;
+        margin: 0 auto;
+        bottom: 2px;
+    }
+
+    .rating-bar-box span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .company-details-ratings__item-rate {
+        font-weight: 500;
+        color: var(--color-sub-light);
+    }
+
+    .text-nowrap {
+        white-space: nowrap !important;
+    }
+
+    .mt-20 {
+        margin-top: 20px !important;
+    }
+
+    .ibutton-red {
+        background-color: #023047;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 7px;
+    }
+    .star0 img{
+        width: 30%;
+       
+        margin-top: 2%;
+    }
+
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<!-- Main Section -->
+
+<!-- ---------------------------------------------Hieu code ---------------------------------------------------------------------------->
+<div class="overall">
+    <div class="introduction">
+        <div id="img">
+            <img style="height:100%; PADDING: 30PX;" alt="Toshiba Software Development (Viet Nam) Co, Ltd Vietnam Big Logo" data-controller="lazyload"
+                height="152" width="170" class=" lazyloaded" src="{{company.company_img.url}}">
+
+        </div>
+
+        <div class="info">
+            <h2> {{company.name}}</h2><br>
+            <span style="color: black"><i class="fa fa-map-marker" aria-hidden="true"
+                    style="margin-right: 10px;color: #5aa5b9"></i>Ho Chi Minh, Ha
+                Noi, Da Nang,...</span><br>
+            <span style="color: black"><i class="fa fa-circle" aria-hidden="true"
+                    style="margin-right: 10px;font-size: 10px;color: #5aa5b9"></i>{{company.type}}</span>
+            <div class="svg-icon">
+                <svg class="svg-icon__icon">
+                    <use xlink:href="#calendar_icon"></use>
+                </svg>
+              
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="navigation">
+            <ul>
+                <li id="jobs"><a data-controller="utm-tracking" href="{% url 'companies:company-jobs' company.id %}"
+                        style="width: 100%">Jobs</a></li>
+                <li id="reviews"> <a data-controller="utm-tracking"
+                        href="{% url 'companies:company-reviews' company.id %}" style="width: 100%">Reviews</a></li>
+            </ul>
+        </div>
+        <div class="right">
+
+            <div class="rating">
+                <div id="overallRate">
+                    <h3 class="panel-title">Overall Rating   </h3>
+                   
+                    <div class="star0"> 
+                      
+                        {% if company.average_stars == 1.0 %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        
+                        {% for i in "1234" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars > 1.0 and company.average_stars < 2.0 %}
+                        <img  src="/static/images/companies/1.5.png" alt="">
+                        {% elif company.average_stars == 2.0 %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars > 2.0 and company.average_stars < 3.0 %}
+                        <img src="/static/images/companies/2.5.png" alt="">
+                        {% elif company.average_stars == 3.0 %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars > 3.0 and company.average_stars < 4.0 %}
+                        <img src="/static/images/companies/3.5.png" alt="">
+                        {% elif company.average_stars == 4.0 %}
+                        {% for i in "1234" %}
+                        <span  class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 50px;margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif company.average_stars > 4.0 and company.average_stars < 5.0 %}
+                        <img src="/static/images/companies/4.5.png" alt="">
+                        {% elif company.average_stars == 5.0 %}
+                        {% for i in "12345" %}
+                        <span class="star" id="star1" style="font-size: 50px;color: #FFC107; margin-right: 0.8%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% endif %}
+                        
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="top-reviews">
+                <h3 class="panel-title">Top Reviews</h3>
+
+
+
+                {% for review in company.companyreview_set.all %}
+                <hr style="margin: 3% 3%;">
+                <div class="eachcomment">
+                    <div class="user" style="width: 8vw">
+                        <img style="width: 100%" src="/static/images/profiles/user-default.png" alt="">
+                    </div>
+                    <div class="comment">
+                        <div class="star0 small">
+                        {% if review.stars == 1.0 %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1234" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 2.0 %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 3.0 %}
+                        {% for i in "123" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "12" %}
+                        <span class="star" id="star1" style="font-size: 25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 4.0 %}
+                        {% for i in "1234" %}
+                        <span  class="star" id="star1" style="font-size: 25px;color: #FFC107; margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% for i in "1" %}
+                        <span class="star" id="star1" style="font-size:25px;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% elif review.stars == 5.0 %}
+                        {% for i in "12345" %}
+                        <span class="star" id="star1" style="font-size: 25px;color: #FFC107;margin-right: 0.4%;"><i class="fa fa-star"></i></span>
+                        {% endfor %}
+                        {% endif %}
+                     
+                      
+                        </div>
+                        <span class="title">{{review.title}}</span>
+                        <div class="details-review" data-controller="reviews--highlight-ot">
+                            <div class="what-you-liked">
+
+                                <div class="panel-paragraph pb-15 text-break">
+                                    {{review.advantage}}
+                                </div>
+                            </div>
+                            <div class="feedback">
+
+                                <div class="panel-paragraph pb-15 text-break">
+                                    {{review.defect}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {% endfor %}
+
+                <div class="company-review-page__right mt-1" style="margin-top: 10vh;">
+                    <div class="d-none d-md-block">
+                        <div class="panel panel-default">
+
+                            <h3 class="panel-title" style="margin-top: 2vh;">Let your voice be heard.</h3>
+
+                            <div class="panel-body">
+                                <div class="panel-paragraph mb-20" style="font-size: 22px;">Review {{company.name}} now
+                                </div>
+                                <a style="margin-top: 2%;" class="button ibutton full-width big ibutton-red" rel="nofollow"
+                                    href="{% url 'companies:review-form' company.id %}">Write review</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+   
+    function setRating(rating) {
+        for (var i = 1; i <= 5; i++) {
+            var star = document.getElementById("star" + i);
+            if (i <= rating) {
+                star.classList.add("selected");
+            } else {
+                star.classList.remove("selected");
+            }
+        }
+    }
+    document.querySelector('#reviews').classList.add('navigation-active');
+
+
+
+        // document.querySelector('#navigation #jobs').addEventListener('click', () => {
+        //     document.querySelector('#jobs').classList.add('navigation-active')
+        //     document.querySelector('#reviews').classList.remove('navigation-active')
+        //     document.getElementsByClassName('right')[0].style.display = 'none';
+        //     document.getElementsByClassName('left')[0].style.display = 'block';
+        // })
+        // document.querySelector('#navigation #reviews').addEventListener('click', () => {
+        //     document.querySelector('#jobs').classList.remove('navigation-active')
+        //     document.querySelector('#reviews').classList.add('navigation-active')
+        //     document.getElementsByClassName('right')[0].style.display = 'block';
+        //     document.getElementsByClassName('left')[0].style.display = 'none';
+        // })
+</script>
+{% endblock content %}
